@@ -30,6 +30,9 @@ public class WeatherInfo
 
     [JsonPropertyName("icon")]
     public string Icon { get; set; } = string.Empty;
+
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
 }
 
 public class MainInfo

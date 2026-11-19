@@ -4,14 +4,8 @@
              xmlns:vm="clr-namespace:WeatherApp.ViewModels"
              x:Class="WeatherApp.Views.MainPage"
              x:DataType="vm:MainViewModel"
-             Title="Weather">
-
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#4A90E2" Offset="0.0" />
-            <GradientStop Color="#1E3C72" Offset="1.0" />
-        </LinearGradientBrush>
-    </ContentPage.Background>
+             Title="Weather"
+             Background="{Binding BackgroundBrush}">
 
     <Grid RowDefinitions="*,Auto">
         <ScrollView Grid.Row="0">
