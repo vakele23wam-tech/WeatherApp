@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WeatherApp.ViewModels"
+             x:Class="WeatherApp.Views.MainPage"
+             x:DataType="vm:MainViewModel"
+             Title="Weather">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#4A90E2" Offset="0.0" />
+            <GradientStop Color="#1E3C72" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="24" Spacing="20" VerticalOptions="Center">
+
+            <Label Text="{Binding CityName}"
+                   FontSize="28" FontAttributes="Bold"
+                   TextColor="White" HorizontalOptions="Center" />
+
+            <Label Text="{Binding TodayDate}"
+                   FontSize="16" TextColor="#DDEEFF"
+                   HorizontalOptions="Center" />
+
+            <Image Source="{Binding IconUrl}"
+                   HeightRequest="120" WidthRequest="120"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding Temperature}"
+                   FontSize="72" FontAttributes="Bold"
+                   TextColor="White" HorizontalOptions="Center" />
+
+            <Label Text="{Binding Description}"
+                   FontSize="22" TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding FeelsLike}"
+                   FontSize="16" TextColor="#DDEEFF"
+                   HorizontalOptions="Center" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Border Grid.Column="0" BackgroundColor="#33FFFFFF"
+                        StrokeThickness="0" Padding="16"
+                        StrokeShape="RoundRectangle 16">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Humidity" FontSize="14"
+                               TextColor="#DDEEFF" HorizontalOptions="Center" />
+                        <Label Text="{Binding Humidity}" FontSize="22"
+                               FontAttributes="Bold" TextColor="White"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Column="1" BackgroundColor="#33FFFFFF"
+                        StrokeThickness="0" Padding="16"
+                        StrokeShape="RoundRectangle 16">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Wind" FontSize="14"
+                               TextColor="#DDEEFF" HorizontalOptions="Center" />
+                        <Label Text="{Binding WindSpeed}" FontSize="22"
+                               FontAttributes="Bold" TextColor="White"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"
+                               Color="White" />
+
+            <Label Text="{Binding StatusMessage}"
+                   FontSize="14" TextColor="#DDEEFF"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
+
+            <Button Text="Get My Weather"
+                    Command="{Binding LoadWeatherCommand}"
+                    BackgroundColor="White" TextColor="#1E3C72"
+                    FontAttributes="Bold" CornerRadius="24"
+                    HeightRequest="50" />
+        </VerticalStackLayout>
+        </ScrollView>
+
+        <Label Grid.Row="1"
+           Text="Property of Vakele Ntshudu"
+           FontSize="12"
+           TextColor="#DDEEFF"
+           HorizontalOptions="Center"
+           Padding="0,8,0,16" />
+        </Grid>
+</ContentPage>
